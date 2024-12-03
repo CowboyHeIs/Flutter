@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mht/menu.dart';  // Import MyHomePage here
+import 'package:mht/screens/menu.dart';
+import 'package:mht/screens/moodentry_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -13,8 +14,8 @@ class LeftDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primary,
             ),
-            child: Column(
-              children: const [
+            child: const Column(
+              children: [
                 Text(
                   'Mental Health Tracker',
                   textAlign: TextAlign.center,
@@ -27,10 +28,11 @@ class LeftDrawer extends StatelessWidget {
                 Padding(padding: EdgeInsets.all(8)),
                 Text(
                   "Track your mental health every day here!",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.white,
                     fontWeight: FontWeight.normal,
+                    color: Colors.white,
                   ),
                 ),
               ],
@@ -39,20 +41,25 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Home Page'),
+            // Redirection part to MyHomePage
             onTap: () {
               Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MyHomePage(), // Add const if MyHomePage is stateless
-                ),
-              );
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyHomePage(),
+                  ));
             },
           ),
           ListTile(
             leading: const Icon(Icons.mood),
             title: const Text('Add Mood'),
+            // Redirection part to MoodEntryFormPage
             onTap: () {
-              // TODO: Add routing to MoodEntryFormPage here, when created
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MoodEntryFormPage(),
+                  ));
             },
           ),
         ],
